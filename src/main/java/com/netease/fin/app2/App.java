@@ -28,7 +28,6 @@ public class App {
     @ResponseBody
     String home() {
     	Merchant merchant = new Merchant();
-    	merchant.setId(14);
     	merchant.setName("shop");
     	merchant.setUrsName("lin");
     	merchant.setConcat("1212");
@@ -38,7 +37,6 @@ public class App {
     	merchant.setStatus("asdasdf");
     	
     	Merchant merchant2 = new Merchant();
-    	merchant2.setId(13);
     	merchant2.setName("shop");
     	merchant2.setUrsName("lin");
     	merchant2.setConcat("1212");
@@ -50,10 +48,12 @@ public class App {
     	List<Merchant> list = new ArrayList<Merchant>();
     	list.add(merchant);
     	list.add(merchant2);
+    	list.add(merchant2);
     	
-//    	merMapper.insertMerchant(merchant2);
-        merMapper.insertManyMerchant(list);
-    	System.out.println("ok!");
+//    	int index = merMapper.insertMerchant(merchant);
+//        int index = merMapper.insertManyMerchant(list);
+    	List<Merchant> res = merMapper.selectMerchantByName("shop");
+    	System.out.println(res.size()+" ok!");
         return "Hello World!";
     }
 

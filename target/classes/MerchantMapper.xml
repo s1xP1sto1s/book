@@ -2,21 +2,38 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="com.netease.fin.dao.MerchantMapper">
-	
-	<insert id="insertMerchant" parameterType="Merchant">
-		insert into merchant
-		(id,urs_name,name,concat,mobile,email,status,enabled) 
-		values 
-		(#{id},#{ursName},#{name},#{concat},#{mobile},#{email},#{status},#{enabled})
+
+	<insert id="insertMerchant" parameterType="Merchant" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO merchant
+		(urs_name,name,concat,mobile,email,status,enabled)
+		VALUES
+		(#{ursName},#{name},#{concat},#{mobile},#{email},#{status},#{enabled})
 	</insert>
-	
-	<insert id="insertManyMerchant" parameterType="Merchant">
-		insert into merchant (id,urs_name,name,concat,mobile,email,status,enabled)  values 
+
+	<insert id="insertManyMerchant" parameterType="Merchant" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO merchant
+		(urs_name,name,concat,mobile,email,status,enabled)
+		VALUES
 		<foreach collection="list" item="item" separator=",">
-			(#{item.id},#{item.ursName},#{item.name},#{item.concat},#{item.mobile},#{item.email},#{item.status},#{item.enabled})
+			(#{item.ursName},#{item.name},#{item.concat},#{item.mobile},#{item.email},#{item.status},#{item.enabled})
 		</foreach>
 	</insert>
+	 
+	<select id="selectMerchantByName" resultMap="merchantResultMap">
+		SELECT * FROM merchant WHERE name = #{name}
+	</select>
 	
+	<resultMap type="Merchant" id="merchantResultMap">
+		<id property="id" column="id"/>
+		<result property="usrName" column="urs_name"/>
+		<result property="name" column="name"/>
+		<result property="concat" column="concat"/>
+		<result property="mobile" column="mobile"/>
+		<result property="email" column="email"/>
+		<result property="status" column="status"/>
+		<result property="enabled" column="enabled"/>	
+	</resultMap>
+
 </mapper>
