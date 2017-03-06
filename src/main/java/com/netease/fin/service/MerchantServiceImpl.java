@@ -4,17 +4,17 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.netease.fin.model2.CreateMarchantRequest;
-import com.netease.fin.model2.Marchant;
+import com.netease.fin.model2.Merchant;
 
-public class MarchantServiceImpl implements MarchantService {
+public class MerchantServiceImpl implements MerchantService {
 	public static void main(String[] args) throws IOException {
-		new MarchantServiceImpl().create(null);
+		new MerchantServiceImpl().create(null);
 	}
 
 	@Override
-	public Marchant create(CreateMarchantRequest request) throws IOException {
+	public Merchant create(CreateMarchantRequest request) throws IOException {
 		// TODO Auto-generated method stub
-		Marchant marchant = new Marchant();
+		Merchant marchant = new Merchant();
 		marchant.setConcat("张三");
 		marchant.setEmail("35066546@163.com");
 		marchant.setEnabled("y");

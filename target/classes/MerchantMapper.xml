@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.netease.fin.dao.MerchantMapper">
+	
+	<insert id="insertMerchant" parameterType="Merchant">
+		insert into merchant
+		(id,urs_name,name,concat,mobile,email,status,enabled) 
+		values 
+		(#{id},#{ursName},#{name},#{concat},#{mobile},#{email},#{status},#{enabled})
+	</insert>
+	
+	<insert id="insertManyMerchant" parameterType="Merchant">
+		insert into merchant (id,urs_name,name,concat,mobile,email,status,enabled)  values 
+		<foreach collection="list" item="item" separator=",">
+			(#{item.id},#{item.ursName},#{item.name},#{item.concat},#{item.mobile},#{item.email},#{item.status},#{item.enabled})
+		</foreach>
+	</insert>
+	
+</mapper>

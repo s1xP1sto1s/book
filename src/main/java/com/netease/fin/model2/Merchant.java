@@ -6,10 +6,10 @@ import java.io.Serializable;
  * @author hzsiyaomin
  *
  */
-public class Marchant implements Serializable{
+public class Merchant implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	private Integer id;
+	private int id;
 	private String ursName;
 	private String name;
 	private String concat;
@@ -17,6 +17,7 @@ public class Marchant implements Serializable{
 	private String email;
 	private String status;//new/authing/pass/fail
 	private String enabled;//true false 是否被禁用
+	
 	public Integer getId() {
 		return id;
 	}
