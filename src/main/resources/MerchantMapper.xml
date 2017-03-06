@@ -21,13 +21,13 @@
 		</foreach>
 	</insert>
 	 
-	<select id="selectMerchantByName" resultMap="merchantResultMap">
+	<select id="selectMerchantByName" parameterType="java.lang.String" resultMap="merchantResultMap">
 		SELECT * FROM merchant WHERE name = #{name}
 	</select>
 	
 	<resultMap type="Merchant" id="merchantResultMap">
 		<id property="id" column="id"/>
-		<result property="usrName" column="urs_name"/>
+		<result property="ursName" column="urs_name"/>
 		<result property="name" column="name"/>
 		<result property="concat" column="concat"/>
 		<result property="mobile" column="mobile"/>
