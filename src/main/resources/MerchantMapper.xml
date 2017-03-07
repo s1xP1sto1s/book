@@ -25,6 +25,10 @@
 		SELECT * FROM merchant WHERE name = #{name}
 	</select>
 	
+	<select id="selectMerchantByUsername" parameterType="java.lang.String" resultMap="merchantResultMap">
+		SELECT * FROM merchant WHERE urs_name = #{username}
+	</select>
+	
 	<resultMap type="Merchant" id="merchantResultMap">
 		<id property="id" column="id"/>
 		<result property="ursName" column="urs_name"/>

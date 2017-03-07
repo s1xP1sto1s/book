@@ -1,30 +1,32 @@
 package com.netease.fin.service;
 
 import java.io.IOException;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.netease.fin.dao.MerchantMapper;
 import com.netease.fin.model2.CreateMarchantRequest;
 import com.netease.fin.model2.Merchant;
 
+@Service
 public class MerchantServiceImpl implements MerchantService {
-	public static void main(String[] args) throws IOException {
-		new MerchantServiceImpl().create(null);
+	
+	@Autowired
+	MerchantMapper merchantMapper;
+
+	@Override
+	public String create(Merchant merchant) throws IOException {
+		int num = merchantMapper.insertMerchant(merchant);
+		return num>0?"success":"faled";
 	}
 
 	@Override
-	public Merchant create(CreateMarchantRequest request) throws IOException {
-		// TODO Auto-generated method stub
-		Merchant marchant = new Merchant();
-		marchant.setConcat("张三");
-		marchant.setEmail("35066546@163.com");
-		marchant.setEnabled("y");
-		marchant.setId(0);
-		marchant.setMobile("13212128888");
-		marchant.setName("商户A");
-		marchant.setStatus("authing");
-		marchant.setUrsName("urs@126.com");
-		new ObjectMapper().getFactory().createGenerator(System.out).writeObject(marchant);
-		return null;
+	public List<Merchant> findByName(String username) {
+		List<Merchant> list = merchantMapper.selectMerchantByUsername(username);
+		return list;
 	}
 
 }

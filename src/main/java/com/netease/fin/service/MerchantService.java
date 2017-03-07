@@ -1,6 +1,7 @@
 package com.netease.fin.service;
 
 import java.io.IOException;
+import java.util.List;
 
 import com.netease.fin.model2.CreateMarchantRequest;
 import com.netease.fin.model2.Merchant;
@@ -11,5 +12,18 @@ import com.netease.fin.model2.Merchant;
  *
  */
 public interface MerchantService {
-	public Merchant create(CreateMarchantRequest request) throws IOException;
+	/**
+	 * 创建商户
+	 * @param merchant
+	 * @return
+	 * @throws IOException
+	 */
+	public String create(Merchant merchant) throws IOException;
+	
+	/**
+	 * 根据用户名查询商户
+	 * @param username
+	 * @return
+	 */
+	public List<Merchant> findByName(String username);
 }
