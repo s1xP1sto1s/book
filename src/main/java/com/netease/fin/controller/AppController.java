@@ -19,7 +19,7 @@ import com.netease.fin.service.ConfigService;
 import com.netease.fin.service.MerchantService;
 
 @Controller
-@RequestMapping(value = "/ui")
+@RequestMapping(value = "/guanghe")
 public class AppController {
 	
 	@Autowired
@@ -39,13 +39,36 @@ public class AppController {
         request.setAttribute("attr", "abc");
         return "web";//返回的内容就是templetes下面文件的名称  
     }
-	
-	@RequestMapping("/test")
-	public String test(HttpServletRequest request){
+	/**
+	 * 光合开放平台主页
+	 * http://localhost:8090/guanghe/index
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/index")
+	public String index(HttpServletRequest request){
 		return "page/index";
 	}
-	@RequestMapping("/test1")
-	public String test1(HttpServletRequest request){
+	
+	/**
+	 * 商家入驻
+	 * http://localhost:8090/guanghe/merchant/register
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/merchant/register")
+	public String register(HttpServletRequest request){
 		return "page/account";
+	}
+	
+	/**
+	 * 处理商家入驻信息
+	 * http://localhost:8090/guanghe/merchant/process
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("/merchant/process")
+	public String process(HttpServletRequest request){
+		return "web";
 	}
 }
