@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+/*------------------------------------------弹窗------------------------------------------*/
+
+.m-dialog-mask {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #000;
+    filter: alpha(opacity=40);
+    opacity: 0;
+    z-index: 9999;
+	display:none;
+}
+
+.m-dialog-box {
+    position: fixed;
+    _position: absolute;
+    z-index: 10000;
+	left:50%;
+	top:50%;
+	display:none
+}
+
+.m-dialog-body {
+    border: 1px solid #98a6b7;
+    position: relative;
+    box-shadow: 1px 5px 5px rgba(150,150,150,0.5);
+    background: #fff;     
+}
+
+.m-dialog-title {
+    line-height: 49px;
+    background: #E6EBEF;
+    padding-left: 20px;
+    display: block;
+    font-weight: bold;   
+}
+
+.m-dialog-close {   
+    position: absolute;
+    right: 10px;
+    top: 14px;
+    cursor: pointer;
+    font-size: 1px;
+    line-height: 1px;
+}
+
+.m-dialog-close .icon-remove-sign{
+    font-size: 22px;  
+    color:#98a6b7;
+}
+
+.m-dialog-close .icon-remove-sign:hover{  
+    color:#4c82af;
+}
+
+.m-dialog-content {
+    min-width: 300px;
+    min-height: 150px;
+    padding: 20px 20px;
+}
+

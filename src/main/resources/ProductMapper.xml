@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.netease.fin.dao.ProductMapper">
+	<insert id="insertProduct" parameterType="Product" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO product 
+		(name,
+		merchant_id,
+		biz_id,
+		product_type,
+		app_key,
+		merchant_public_key,
+		platform_public_key,
+		platform_private_key,
+		auth_tpl_id,
+		auth_tpl_content,
+		service_tpl_id,
+		service_tpl_content,
+		detail_page_content,
+		status)
+		VALUES
+		(#{name},
+		#{merchantId},
+		#{bizId},
+		#{productType},
+		#{appKey},
+		#{merchantPublicKey},
+		#{platformPublicKey},
+		#{platformPrivateKey},
+		#{authTplId},
+		#{authTplContent},
+		#{serviceTplId},
+		#{serviceTplContent},
+		#{detailPageContent},
+		#{status})
+	</insert>
+	
+	<insert id="insertManyProduct" parameterType="Product" useGeneratedKeys="true" keyProperty="id">
+		INSERT INTO product 
+		(name,
+		merchant_id,
+		biz_id,
+		product_type,
+		app_key,
+		merchant_public_key,
+		platform_public_key,
+		platform_private_key,
+		auth_tpl_id,
+		auth_tpl_content,
+		service_tpl_id,
+		service_tpl_content,
+		detail_page_content,
+		status)
+		VALUES
+		<foreach collection="list" item="item" separator=",">
+			(#{item.name},
+			#{item.merchantId},
+			#{item.bizId},
+			#{item.productType},
+			#{item.appKey},
+			#{item.merchantPublicKey},
+			#{item.platformPublicKey},
+			#{item.platformPrivateKey},
+			#{item.authTplId},
+			#{item.authTplContent},
+			#{item.serviceTplId},
+			#{item.serviceTplContent},
+			#{item.detailPageContent},
+			#{item.status})
+		</foreach>		
+	</insert>
+	
+	<update id="updateProduct" parameterType="Product">
+		UPDATE product SET
+			name = #{name},
+			merchant_id = #{merchantId},
+			biz_id = #{bizId},
+			product_type = #{productType},
+			app_key = #{appKey},
+			merchant_public_key = #{merchantPublicKey},
+			platform_public_key = #{platformPublicKey},
+			platform_private_key = #{platformPrivateKey},
+			auth_tpl_id = #{authTplId},
+			auth_tpl_content = #{authTplContent},
+			service_tpl_id = #{serviceTplId},
+			service_tpl_content = #{serviceTplContent},
+			detail_page_content = #{detailPageContent},
+			status = #{status}
+		WHERE 
+			id = #{id}	
+	</update>
+	
+	<select id="selectProductByName" parameterType="java.lang.String" resultMap="productMap">
+		SELECT * FROM product WHERE name = #{name}
+	</select>
+	
+	<resultMap type="Product" id="productMap">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="merchant_id" property="merchantId"/>
+		<result column="biz_id" property="bizId"/>
+		<result column="product_type" property="productType"/>
+		<result column="app_key" property="appKey"/>
+		<result column="merchant_public_key" property="merchantPublicKey"/>
+		<result column="platform_public_key" property="platformPublicKey"/>
+		<result column="platform_private_key" property="platformPrivateKey"/>
+		<result column="auth_tpl_id" property="authTplId"/>
+		<result column="auth_tpl_content" property="authTplContent"/>
+		<result column="service_tpl_id" property="serviceTplId"/>
+		<result column="service_tpl_content" property="serviceTplContent"/>
+		<result column="detail_page_content" property="detailPageContent"/>
+		<result column="status" property="status"/>
+	</resultMap>
+</mapper>

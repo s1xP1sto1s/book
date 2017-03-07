@@ -1,0 +1,77 @@
+## 1. 摘要算法
+
+### 1.1 第一步
+
+> 设所有发送或者接收到的数据为集合M，将集合M内非空参数值的参数按照参数名ASCII码从小到大排序（字典序），使用URL键值对的格式（即key1=value1&key2=value2…）拼接成字符串stringA。
+
+**特别注意以下重要规则：**
+
+* 参数名ASCII码从小到大排序（字典序）；
+* 如果参数的值为空不参与签名；
+* 参数名区分大小写；
+* 业务参数BASE64后使用参数名data参加签名；
+* 验证调用返回或主动通知签名时，传送的sign参数不参与签名，将生成的签名与该sign值作校验；
+* openapi可能增加字段，验证签名时必须支持增加的扩展字段；
+
+### 1.2 第二步
+
+> 对stringA进行SHA256运算后即可得到摘要digest
+
+## 2. 举例：请求摘要算法
+
+**假设传送的参数如下：**
+
+**公共参数：**
+
+```text
+app_id:     59B0294BC36040899E12E0EA137D4939
+sign_type:  RSA2
+timestamp:  1488770275815
+version:    1.0
+```
+
+**业务参数（目前仅支持JSON）：**
+
+```json
+{"example1":"abc","example2":"xyz","example3":"123"}
+```
+
+### 2.1 第一步：对业务参数BASE64，例如得到如下数据：
+
+```text
+eyJleGFtcGxlMSI6ImFiYyIsImV4YW1wbGUyIjoieHl6IiwiZXhhbXBsZTMiOiIxMjMifQ==
+```
+
+### 2.2 第二步：对参数按照key=value的格式，并按照参数名ASCII字典序排序如下：
+
+```text
+stringA="app_id=12345678910JQK&data=eyJleGFtcGxlMSI6ImFiYyIsImV4YW1wbGUyIjoieHl6IiwiZXhhbXBsZTMiOiIxMjMifQ==&sign_type=RSA2&timestamp=1488770275815&version=1.0";
+```
+
+### 2.3 第三步：SHA256后得到摘要：
+
+```text
+digest=SHA256(stringA);
+```
+
+## 3. 举例：响应摘要算法
+
+### 3.1 第一步：拿到响应body的整个JSON串：
+
+```json
+{
+    "sign":"x2lgPWl/LHp9VK88yFVyqP9R7r7RRjzla1SJ16X1M/g48ZhcPqENdjK15A7F+FzpBQFAei8ZBecau8o0eYhHbCA1kNahG2u+ZbnxuNTkE5k=",
+    "data": "eyJjb2RlIjoiU1VDQ0VTUyIsIm1zZyI6Iuiwg+eUqOaIkOWKnyIsImRhdGEiOnsiZXhhbXBsZTEiOiJhYmMiLCJleGFtcGxlMiI6Inh5eiJ9fQ=="
+}
+```
+
+**拿到data数据：**
+```text
+data="eyJjb2RlIjoiU1VDQ0VTUyIsIm1zZyI6Iuiwg+eUqOaIkOWKnyIsImRhdGEiOnsiZXhhbXBsZTEiOiJhYmMiLCJleGFtcGxlMiI6Inh5eiJ9fQ==";
+```
+
+### 3.2 第二步：SHA256后得到摘要：
+
+```text
+digest=SHA256(data);
+```

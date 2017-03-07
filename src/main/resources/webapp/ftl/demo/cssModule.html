@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="/cdnStaticSource20151123/wap/20160216/css/public/base.css">
+    <link rel="stylesheet" href="/cdnStaticSource20151123/wap/20160216/css/base64/sprites.css">
+    <title>样式大全</title>
+    <style>
+        /*只为文档展示需要*/
+        body{
+            overflow: visible;
+        }
+        .cssTitle {
+            font-size:20px;
+            font-weight:bold;
+            padding:20px 0;
+        }
+        .tableTitle {
+            font-size:16px;
+            background:#CCC;
+            font-weight: bold;
+        }
+        .box{
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+        }
+        .description{
+            background: #e4e4e4;
+            font-weight: bold;
+        }
+        .leftItem{
+            -webkit-flex:1;
+            -ms-flex:1;
+            flex:1;
+        }
+        .rightItem{
+            -webkit-flex:3;
+            -ms-flex:3;
+            flex:3;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="cssTitle">header</h1>
+    <div class="tableTitle">header</div>
+    <div class="description">
+        <div>class:请直接使用header标签</div>
+        <div>example:</div>
+    </div>
+    <div>
+        <header>
+            <a href="javascript:history.back();" class="return"></a>
+            <span class="header-title">登录网易宝</span>
+        </header>
+        <ul class="progressBar">
+            <li></li>
+            <li class="beforeReach"></li>
+            <li class="beforeReach"></li>
+        </ul>
+    </div>
+
+    <div class="cssTitle">按钮</div>
+    <div class="tableTitle">长按钮</div>
+    <div class="description box">
+        <div class="leftItem">class:</div>
+        <div class="rightItem">longBtn、longBtn-1、longBtn-2</div>
+    </div>
+    <div class="description">
+        <div>example:</div>
+    </div>
+    <div>
+        <div class="btn-wrap">
+            <input type="submit" value="登录" class="longBtn">
+        </div>
+    </div>
+    <div>
+        <div class="btn-wrap">
+            <input type="submit" value="解除绑定" class="longBtn longBtn-1">
+        </div>
+    </div>
+    <div>
+        <div class="btn-wrap">
+            <input type="submit" value="退出" class="longBtn longBtn-2">
+        </div>
+    </div>
+    <div>
+        <div class="btn-wrap">
+            <input type="submit" value="退出" class="longBtn longBtn-3">
+        </div>
+        <div class="btn-wrap btn-wrap-1">
+            <input type="submit" value="登录" class="longBtn">
+        </div>
+    </div>
+
+    <div class="cssTitle">数字密码</div>
+    <div class="tableTitle">支付密码</div>
+    <div class="description box">
+        <div class="leftItem">class:</div>
+        <div class="rightItem">numPwd-wrapper</div>
+    </div>
+    <div class="description">
+        <div>example:</div>
+    </div>
+    <div>
+        <div class="numPwdC">
+            <div class="numPwd-wrapper">
+                <div class="numPwd-innerW">
+                    <div class="numPwd-table">
+                        <span class="item">◆</span>
+                        <span class="item"></span>
+                        <span class="item"></span>
+                        <span class="item"></span>
+                        <span class="item"></span>
+                        <span class="item"></span>
+                    </div>
+                </div>
+                <input type="password" class="password" maxlength="6">
+            </div>
+            <div class="btn-wrap">
+                <input type="button" value="下一步" class="longBtn">
+            </div>
+        </div>
+    </div>
+
+    <div class="cssTitle">状态</div>
+    <div class="tableTitle">等待、成功和失败状态</div>
+    <div class="description box">
+        <div class="leftItem">class:</div>
+        <div class="rightItem">status-loading（内部class）</div>
+    </div>
+    <div class="description">
+        <div>example:</div>
+    </div>
+    <div>
+        <div class="status-wrapper">
+            <div class="status-loading j-pic"></div>
+            <div class="status-desc j-desc">支付请求中</div>
+        </div>
+    </div>
+    <div class="description box">
+        <div class="leftItem">class:</div>
+        <div class="rightItem">status-success（内部class）</div>
+    </div>
+    <div class="description">
+        <div>example:</div>
+    </div>
+    <div>
+        <div class="status-wrapper">
+            <div class="status-success j-pic"></div>
+            <div class="status-desc j-desc">付款成功</div>
+        </div>
+    </div>
+    <div class="description box">
+        <div class="leftItem">class:</div>
+        <div class="rightItem">status-fail（内部class）</div>
+    </div>
+    <div class="description">
+        <div>example:</div>
+    </div>
+    <div>
+        <div class="status-wrapper">
+            <div class="status-fail j-pic"></div>
+            <div class="status-desc j-desc">系统繁忙，请稍后再试</div>
+        </div>
+    </div>
+
+    <div class="cssTitle">状态</div>
+    <div class="tableTitle">报错信息</div>
+    <div class="description box">
+        <div class="leftItem">class:</div>
+        <div class="rightItem">error-msg</div>
+    </div>
+    <div class="description">
+        <div>example:</div>
+    </div>
+    <div>
+        <div class="error-msg">提示文字有限制，带标点十五个字</div>
+    </div>
+
+    <div class="cssTitle">垂直栅格</div>
+    <div class="tableTitle">垂直栅格紧邻</div>
+    <div class="description box">
+        <div class="leftItem">class:</div>
+        <div class="rightItem">verticalG</div>
+    </div>
+    <div class="description">
+        <div>example:</div>
+    </div>
+    <div>
+        <ul class="verticalG f-cbli">
+            <li>
+                <div class="formInput-outer-2 noBT">
+                    <div class="colgroup">
+                        <div class="col character"></div>
+                        <div class="col"></div>
+                    </div>
+                    <div class="formI">
+                        <span class="info">卡类型</span>
+                    </div>
+                    <div class="formI">
+                        <select class="blueS">
+                            <option>工商银行</option>
+                        </select>
+                        <select class="blueS">
+                            <option>储蓄卡</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="formInput-outer-2">
+                    <div class="colgroup">
+                        <div class="col character"></div>
+                        <div class="col"></div>
+                    </div>
+                    <div class="formI">
+                        <span class="info">卡类型</span>
+                    </div>
+                    <div class="formI">
+                        <select class="blueS">
+                            <option>工商银行</option>
+                        </select>
+                        <select class="blueS">
+                            <option>储蓄卡</option>
+                        </select>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="tableTitle">垂直栅格分离</div>
+    <div class="description box">
+        <div class="leftItem">class:</div>
+        <div class="rightItem">verticalG-1</div>
+    </div>
+    <div class="description">
+        <div>example:</div>
+    </div>
+    <div>
+        <ul class="verticalG-1 f-cbli">
+            <li>
+                <span class="info">持卡人</span>
+                <div class="formInput-outer-1">
+                    <input type="text" class="formInput-1" placeholder="请输入银行卡户名">
+                </div>
+            </li>
+            <li class="newC">
+                <span class="info">跳转</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="cssTitle">校验</div>
+    <div class="tableTitle">校验层</div>
+    <div class="description box">
+        <div class="leftItem">class:</div>
+        <div class="rightItem">verify-layer</div>
+    </div>
+    <div class="description">
+        <div>example:</div>
+    </div>
+    <div>
+        <div class="verify-layerW">
+            <div class="verify-layer">
+                <p>绑定银行卡需要短信确认， 验证码已发送至手机号：159****5906</p>
+                <div class="formInput-outer-2 smsCode">
+                    <div class="colgroup">
+                        <div class="col"></div>
+                        <div class="col" style="width: 5px"></div>
+                        <div class="col" style="width: 90px;"></div>
+                    </div>
+                    <div class="formI">
+                        <input type="tel" class="formInput-2" placeholder="输入短信验证码">
+                    </div>
+                    <div class="formI">
+
+                    </div>
+                    <div class="formI">
+                        <button>59s</button>
+                    </div>
+                </div>
+                <div class="canNotReceiveW f-cb">
+                    <span class="canNotReceive j-canNotReceive">收不到验证码？</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="verify-layerW">
+            <div class="verify-layer">
+                <div class="JIANGJUNLING">
+                    <div class="firstSection">
+                        <img src="/cdnStaticSource20151123/wap/20160216/images/jjl.png" width="22">
+                        <span>网易将军令动态密码</span>
+                    </div>
+                    <div class="numPwd-wrapper numPwd-wrapper-1">
+                        <div class="numPwd-innerW">
+                            <div class="numPwd-table">
+                                <span class="item"></span>
+                                <span class="item"></span>
+                                <span class="item"></span>
+                                <span class="item"></span>
+                                <span class="item"></span>
+                                <span class="item"></span>
+                            </div>
+                        </div>
+                        <input type="password" class="password" maxlength="6">
+                    </div>
+                    <div class="btn-wrap btn-wrap-1">
+                        <input type="button" value="下一步" class="longBtn" id="ekyBtn" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="verify-layerW">
+            <div class="verify-layer mbk">
+                <div class="rules">
+                    <div class="colgroup">
+                        <div class="col"></div><div class="col" style="width: 2px"></div><div class="col"></div><div class="col" style="width: 2px"></div><div class="col"></div>
+                    </div>
+                    <ul>
+                        <li>
+                            <div>A1</div>
+                        </li>
+                        <li></li>
+                        <li>
+                            <div>A1</div>
+                        </li>
+                        <li></li>
+                        <li>
+                            <div>A1</div>
+                        </li>
+                    </ul>
+                </div>
+                <input type="tel" class="inputMBK" placeholder="请输入密保卡密码">
+            </div>
+        </div>
+    </div>
+    <div class="description box">
+        <div class="leftItem">class:</div>
+        <div class="rightItem">verify-paymentPassword</div>
+    </div>
+    <div class="description">
+        <div>example:</div>
+    </div>
+    <div>
+        <div class="verify-paymentPassword">
+            <div class="already">输入网易钱包支付密码，以完成付款</div>
+            <ul class="verticalG-1 f-cbli">
+                <li>
+                    <span class="info">支付密码</span>
+                    <div class="formInput-outer-1">
+                        <input type="text" class="formInput-1" placeholder="请输入银行卡户名">
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="cssTitle">对话框</div>
+    <div class="tableTitle">报错对话框</div>
+    <div class="description box">
+        <div class="leftItem">class:</div>
+        <div class="rightItem">error-dialog</div>
+    </div>
+    <div class="description">
+        <div>example:</div>
+    </div>
+    <div>
+        <div class="error-dialog">
+            <div class="content">你的网易钱包挂失中，如非本人操作，请登录www.epay.163.com查看详情</div>
+            <div class="error-btns">
+                <div class="btn" key="close">知道了</div>
+            </div>
+        </div>
+    </div>
+    <div class="description">
+        <div>example:</div>
+    </div>
+    <div>
+        <div class="error-dialog">
+            <div class="content">你的网易钱包挂失中，如非本人操作，请登录www.epay.163.com查看详情</div>
+            <div class="error-btns">
+                <div class="btn" key="close">取消</div>
+                <div class="btn">更换支付方式</div>
+            </div>
+        </div>
+    </div>
+    <div class="tableTitle">解释对话框</div>
+    <div class="description box">
+        <div class="leftItem">class:</div>
+        <div class="rightItem">explain-dialog</div>
+    </div>
+    <div class="description">
+        <div>example:</div>
+    </div>
+    <div>
+        <div class="explain-dialog">
+            <div class="content">
+                <h1>收不到短信验证码</h1>
+                <p class="will">短信验证码会发送至你的银行预留手机号</p>
+                <ul>
+                    <li>1.请确认当前是否使用银行预留的手机号码</li>
+                    <li>2.请检查短信是否被手机安全软件拦截</li>
+                    <li>3.若预留号码已停用，请联系银行客服咨询</li>
+                    <li>4.更多帮助，请拨打客服电话 <span class="phoneN">020-89166198</span></li>
+                </ul>
+            </div>
+            <div class="explain-btns">
+                <div class="btn" key="close">知道了</div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="explain-dialog">
+            <div class="content">
+                <h1>安全码说明</h1>
+                <img src="/cdnStaticSource20151123/wap/20160216/images/securityCode.png" width="211" class="explainImg">
+                <p>安全码打印在信用卡背面签名区的一组数字，一般是后3位或4位数字。</p>
+            </div>
+            <div class="explain-btns">
+                <div class="btn" key="close">知道了</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cssTitle">同意协议</div>
+    <div class="tableTitle">同意协议</div>
+    <div class="description box">
+        <div class="leftItem">class:</div>
+        <div class="rightItem">cbW</div>
+    </div>
+    <div class="description">
+        <div>example:</div>
+    </div>
+    <div>
+        <div class="cbW">
+            <input type="checkbox">
+            <span>同意</span>
+            <a href="" target="_blank">《服务协议》</a>
+        </div>
+    </div>
+
+</body>
+</html>

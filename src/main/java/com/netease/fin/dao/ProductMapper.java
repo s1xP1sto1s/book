@@ -9,12 +9,32 @@ import com.netease.fin.model2.Product;
 
 @Mapper
 public interface ProductMapper {
-	void insertProduct(Product product);
+	/**
+	 * 插入一个商品
+	 * @param product
+	 * @return
+	 */
+	int insertProduct(Product product);
 	
-	void insertManyProduct(List<Product> list);
+	/**
+	 * 一个线程同时插入多个商品
+	 * @param list
+	 * @return
+	 */
+	int insertManyProduct(List<Product> list);
 	
-	void updateProdyct(Product product);
+	/**
+	 * 更新商品
+	 * @param product
+	 * @return
+	 */
+	int updateProduct(Product product);
 	
-	void selectProductById(@Param("id") int id);
+	/**
+	 * 根据商品名查询商品
+	 * @param name
+	 * @return
+	 */
+	List<Product> selectProductByName(@Param("name") String name);
 
 }

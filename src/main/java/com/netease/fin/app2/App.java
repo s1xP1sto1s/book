@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.netease.fin.dao.MerchantMapper;
+import com.netease.fin.dao.ProductMapper;
 import com.netease.fin.model2.Merchant;
+import com.netease.fin.model2.Product;
 import com.netease.fin.service.MerchantService;
 
 
@@ -29,11 +31,14 @@ public class App {
 	MerchantMapper merMapper;
 	
 	@Autowired
+	ProductMapper proMapper;
+	
+	@Autowired
 	MerchantService merService;
 
     @RequestMapping("/")
     @ResponseBody
-    String home() {
+    String home() throws IOException {
 //    	Merchant merchant = new Merchant();
 //    	merchant.setName("shop");
 //    	merchant.setUrsName("lin");
@@ -72,9 +77,50 @@ public class App {
 //		}
 //    	return str;
     	
-    	List<Merchant> list = merService.findByName("lin");
-    	return ""+list.size();
+//    	Merchant merchant2 = new Merchant();
+//    	merchant2.setName("商店");
+//    	merchant2.setUrsName("六六");
+//    	merchant2.setConcat("1212");
+//    	merchant2.setEmail("123132");
+//    	merchant2.setEnabled("y");
+//    	merchant2.setMobile("1231345");
+//    	merchant2.setStatus("asdasdf");
+//    	
+//    	String status = merService.create(merchant2);
+//    	
+//    	List<Merchant> list = merService.findByName("六六");
+//    	for(Merchant m:list)
+//    		System.out.println(m.getName());
+//    	return ""+list.size();
+//    	
+    	Product pro = new Product();
+    	pro.setName("name");
+    	pro.setMerchantId(20);
+    	pro.setBizId(123);
+    	pro.setProductType("new");
+    	pro.setAppKey("123456");
+    	pro.setMerchantPublicKey("456123");
+    	pro.setPlatformPublicKey("1312");
+    	pro.setPlatformPrivateKey("456123");
+    	pro.setAuthTplId(123);
+    	pro.setAuthTplContent("fdasfsda");
+    	pro.setServiceTplId(456);
+    	pro.setServiceTplContent("asdfsaf");
+    	pro.setDetailPageContent("asdfasdf");
+    	pro.setStatus("checked");
     	
+//    	List<Product> list = new ArrayList<Product>();
+//    	list.add(pro);
+//    	list.add(pro);
+//    	list.add(pro);
+//    	int res = proMapper.insertManyProduct(list);
+    	
+//    	pro.setId(3);
+//    	pro.setStatus("unchecked");
+//    	proMapper.updateProduct(pro);
+    	
+    	List<Product> list = proMapper.selectProductByName("name");
+    	return "ok"+list.size();
     }
 
     public static void main(String[] args) throws Exception {

@@ -1,0 +1,166 @@
+@charset "utf-8";
+/*------------------------重置--重置类样式---------------------*/
+
+
+html,body {
+	
+	font-family: "Microsoft YaHei", Helvetica, Arial;
+	margin:0;
+	color:#333;
+	font-size:14px;
+}
+a {	
+	color:#03C;
+	text-decoration:none;
+}
+
+a:visited {
+	color:#03C;	
+}
+
+a:active, a:hover {
+	text-decoration:underline;
+	outline:0
+}
+
+form,button, input, optgroup, select, textarea{
+	margin:0;
+	padding:0;
+}
+
+
+img {
+	border:0
+}
+
+button {
+	outline:none;
+	overflow:visible;
+	border:none;	
+}
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+	-webkit-appearance:button;
+	cursor:pointer
+}
+button[disabled], html input[disabled] {
+	cursor:default
+}
+
+table {
+	border-spacing:0;
+	border-collapse:collapse
+}
+td, th {
+	padding:0
+}
+
+
+ol, ul,li {
+	list-style: none;
+	margin:0;
+	padding:0;
+}
+
+/*------------------------基础样式定义---------------------*/
+
+/*字体*/
+.b-ff-1 {
+	font-family:"微软雅黑"
+}
+.b-ff-2 {
+	font-family:Arial
+}
+
+
+/*字号*/
+.b-h1, h1 {
+	font-size:36px
+}
+.b-h2, h2 {
+	font-size:30px
+}
+.b-h3, h3 {
+	font-size:24px
+}
+.b-h4, h4 {
+	font-size:18px
+}
+.b-h5, h5 {
+	font-size:14px
+}
+.b-h6, h6 {
+	font-size:12px
+}
+.b-fb {
+	font-weight:bold;
+}
+/*文本对齐*/
+.b-text-left {
+	text-align:left
+}
+.b-text-right {
+	text-align:right
+}
+.b-text-center {
+	text-align:center
+}
+.b-text-nowrap {
+	white-space:nowrap
+}
+/*文本颜色*/
+.b-color-1 {
+	color:#fff;
+}
+.b-color-2 {
+	color:#900;
+}
+/*链接颜色*/
+.b-link-1:link, .b-link-1:visited {
+	color:#069;
+	text-decoration:none;
+}
+.b-link-1:hover {
+	text-decoration:underline;
+}
+.b-link-2:link, .b-link-1:visited {
+	color:#F00;
+	text-decoration:none;
+}
+.b-link-2:hover {
+	text-decoration:underline;
+}
+/*行间距*/
+.b-lh-1 {
+	line-height:20px;
+}
+.b-lh-2 {
+	line-height:30px;
+}
+/*背景颜色*/
+.b-bg-1 {
+	background-color:#069;
+}
+.b-bg-2 {
+	background-color:#900;
+}
+
+.b-mt-10{
+	margin-top:10px;	
+}
+
+.b-mt-20{
+	margin-top:20px;	
+}
+
+
+
+
+
+
+
+
+
+
+
+

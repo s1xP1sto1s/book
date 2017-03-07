@@ -8,11 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.netease.fin.model.ServiceImportInfo;
 import com.netease.fin.model2.Merchant;
+import com.netease.fin.model2.Product;
 import com.netease.fin.service.ConfigService;
 import com.netease.fin.service.MerchantService;
 
@@ -27,7 +29,7 @@ public class AppController {
 	private ConfigService configService;
 	@RequestMapping(value = "/config")
 	@ResponseBody
-	  public ServiceImportInfo config() {
+	  public ServiceImportInfo config(@RequestBody Product product) {
 	    return configService.getImportInfo();
 	  }
 	@RequestMapping("/hi")  
@@ -40,7 +42,10 @@ public class AppController {
 	
 	@RequestMapping("/test")
 	public String test(HttpServletRequest request){
-		List<Merchant> res = merchantService.findByName("lin");
-		return ""+res.size();
+		return "page/index";
+	}
+	@RequestMapping("/test1")
+	public String test1(HttpServletRequest request){
+		return "page/account";
 	}
 }
