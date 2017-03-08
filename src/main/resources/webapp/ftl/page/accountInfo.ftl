@@ -10,15 +10,17 @@
     <li><a href="index.html">系统首页</a>&gt;</li>
     <li><a href="index.html">账户管理</a></li>
   </ul>
-  <#if !account.regist>
-  <div class="page-alert alert-4"><i class="icon-laptop alert-icon"></i>您还没有完成基本信息填写， <strong><a href="/page/account.ftl">马上添加基本信息</a></strong></div>
-  <#else>
+
+ 
+
+  <div class="page-alert alert-4"><i class="icon-laptop alert-icon"></i>您还没有完成基本信息填写， <strong><a href="/guanghe/merchant/register">马上添加基本信息</a></strong></div>
+
   <!--基本资料 开始-->
   <form action="#" class="ui-form ui-form-info">
     <div class="control-title"><i class="icon-cog"></i> 基本信息</div>
     <div class="control-group">
       <label class="control-label">账户名：</label>
-      <div class="controls">lalasxc@126.com </div>
+      <div class="controls"> ${ursName} </div>
     </div>
     <div class="control-group">
       <label class="control-label">登录密码：</label>
@@ -26,24 +28,24 @@
     </div>
     <div class="control-group">
       <label class="control-label">账户状态：</label>
-      <div class="controls">未实名 </div>
+      <div class="controls">${status}</div>
     </div>
     <div class="control-group">
       <label class="control-label">商家名称：</label>
-      <div class="controls">上海小贷有限公司</div>
+      <div class="controls"> ${name}</div>
     </div>
     <div class="control-title"><i class="icon-user"></i> 联系人信息<span style="float:right"><i class="icon-edit"></i>&nbsp;<a id="editPop" href="javascript:;">修改联系人信息</a></span></div>
     <div class="control-group">
       <label class="control-label">联系人：</label>
-      <div class="controls">王小华 </div>
+      <div class="controls"> ${concat}</div>
     </div>
     <div class="control-group">
       <label class="control-label">手机：</label>
-      <div class="controls">18667653211 </div>
+      <div class="controls"> ${mobile} </div>
     </div>
     <div class="control-group">
       <label class="control-label">邮箱：</label>
-      <div class="controls">lalasxc@126.com </div>
+      <div class="controls">${email} </div>
     </div>
   </form>
   <!--基本资料 结束-->
@@ -76,7 +78,7 @@
   </form>
   <!--修改联系人 结束-->
   
-  </#if>
+
 </div>
 <#include "/include/bottom.ftl">
 <script>

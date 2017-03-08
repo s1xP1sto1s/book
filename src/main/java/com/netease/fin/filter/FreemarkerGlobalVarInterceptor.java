@@ -29,8 +29,9 @@ public class FreemarkerGlobalVarInterceptor implements HandlerInterceptor {
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object exp) throws Exception {
 		// TODO Auto-generated method stub
-		request.setAttribute("mock", "false");
-		request.setAttribute("version", "0.1");
+		request.setAttribute("online", "true");
+		request.setAttribute("versionId", String.valueOf(System.currentTimeMillis())); 
+		//TODO 支持动态刷新
 		return true;
 	}
 

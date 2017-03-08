@@ -15,8 +15,8 @@ public class Merchant implements Serializable{
 	private String concat;
 	private String mobile;
 	private String email;
-	private String status;//new/authing/pass/fail
-	private String enabled;//true false 是否被禁用
+	private String status = "new";//new/authing/pass/fail
+	private String enabled = "n";//true false 是否被禁用
 	
 	public Integer getId() {
 		return id;

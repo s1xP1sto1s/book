@@ -7,9 +7,9 @@
 <#include "/include/left.ftl">
 <div class="right">
   <div class="page-title">系统首页</div>
-  <#if !account.regist>
-   <div class="ui-alert alert-4"> <i class="icon-exclamation-sign"></i> 您还没有入驻，请 <strong><a href="http://localhost:8090/guanghe/merchant/register">填写基本信息</a></strong> 后完成流程。 </div>  
-  </#if>
+
+   <div class="ui-alert alert-4"> <i class="icon-exclamation-sign"></i> 您还没有入驻，请 <strong><a href="/guanghe/merchant/register">填写基本信息</a></strong> 后完成流程。 </div>  
+
   <!--系统简介 开始-->
   <div class="ui-box b-mt-20" style="display:none">
     <div class="ui-box-title"><span class="ui-box-tools"><i class="icon-desktop"></i>&nbsp;系统简介</span></div>

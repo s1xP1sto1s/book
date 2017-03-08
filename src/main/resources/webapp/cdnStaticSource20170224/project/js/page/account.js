@@ -41,8 +41,8 @@ define(
 	}
 
 
-	var eles = [gid('accountName'),gid('contact'),gid('mobile'),gid('email')];
-	//var eles = [];
+	//var eles = [gid('accountName'),gid('contact'),gid('mobile'),gid('email')];
+	var eles = [];
 	var v = new validate();
 	
 	v.bindBlur(eles)
@@ -76,35 +76,20 @@ define(
 		};		
 	}
 	
+
 	
-	function submitForm(){		
+	var datas = {ursName:'laldad@126.com',name:'sxc',concat:'afad',mobile:'1879908877',email:'aaa@126.com'}
+	function submitForm(){	
+		
 		$('#submit_err').html('');
 		$.ajax({				
 			url:interfaceUrlMap.addAccount + versionTime(),
 			type:"POST",			
 			timeout:ajaxTime,	
-			error:function(){$('#loading').hide();	$('#submit_err').html('系统错误请重试');},					
+			data:datas,
+			error:function(){$('#loading').hide();	$('#submit_err').html('系统错误请重试222');},					
 			success:function(msg){
-				$('#loading').hide();		
-				try{	
-					var e = typeof(msg) === "object" ? msg : eval("("+msg+")");	
-					var result = e["result"];												
-					if(result === "success"){	
-						alert()
-					}
-					else if(result === "fail"){
-						fillErrForAjax(e.errorMap);
-					}
-					else if(result === "error"){
-						$('#submit_err').html(e.errorMsg);
-					}
-					else{
-						$('#submit_err').html('系统错误请重试')
-					}						
-				}catch(e){						
-					$('#loading').hide();
-					$('#submit_err').html('系统错误请重试');				
-				};					
+				location.href = '/guanghe/merchant/show'	
 			}
 		});		
 		

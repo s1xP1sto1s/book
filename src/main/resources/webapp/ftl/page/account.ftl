@@ -31,7 +31,7 @@
     </div>
   </div>
   <div class="b-mt-20"></div>
-  <form action="http://localhost:8090/guanghe/merchant/process" class="ui-form">
+  <form action="" class="ui-form">
     <div class="control-title"><i class="icon-cog"></i> 基本信息</div>
     <div class="control-group">
       <label class="control-label">账户号</label>

@@ -11,7 +11,7 @@ import com.netease.fin.filter.LoginCheckInterceptor;
 public class MvcInterceptorConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new FreemarkerGlobalVarInterceptor()).addPathPatterns("/ui/**");
+        registry.addInterceptor(new FreemarkerGlobalVarInterceptor()).addPathPatterns("/**");
         registry.addInterceptor(new LoginCheckInterceptor()).addPathPatterns("/**");
     }
 }

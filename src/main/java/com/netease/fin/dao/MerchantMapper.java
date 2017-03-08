@@ -41,4 +41,11 @@ public interface MerchantMapper {
 	 */
 	List<Merchant> selectMerchantByUsername(@Param("username") String name);
 	
+	/**
+	 * 更新商家信息
+	 * @param merchant
+	 * @return
+	 */
+	int updateMerchant(Merchant merchant);
+	
 }

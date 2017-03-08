@@ -18,7 +18,7 @@ public class MerchantServiceImpl implements MerchantService {
 	MerchantMapper merchantMapper;
 
 	@Override
-	public String create(Merchant merchant) throws IOException {
+	public String create(Merchant merchant){
 		int num = merchantMapper.insertMerchant(merchant);
 		return num>0?"success":"faled";
 	}
@@ -27,6 +27,12 @@ public class MerchantServiceImpl implements MerchantService {
 	public List<Merchant> findByName(String username) {
 		List<Merchant> list = merchantMapper.selectMerchantByUsername(username);
 		return list;
+	}
+
+	@Override
+	public String update(Merchant merchant) {
+		int num = merchantMapper.updateMerchant(merchant);
+		return num>0?"success":"faled";
 	}
 
 }

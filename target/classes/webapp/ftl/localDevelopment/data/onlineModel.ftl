@@ -1,6 +1,6 @@
 <#--各种路径url-->
 <#assign rootURL={
-	"ftl":"/20160216-wap"
+	"ftl":"/"
 }>
 
 <#--接口url
@@ -20,18 +20,6 @@ sendAuthCodeToFindPassword //找回密码发送验证码
 sendAuthCodeToFindPassword //找回密码发送验证码
 -->
 <#assign interfaceUrlMap={
-   "coupon":"/cashier/m/ajaxCoupons",
-   "balance":"/cashier/m/ajaxTextBalance",
-   "getBankByBankCard":"/cashier/m/gate/ajaxValidCardNo",
-   "checkForm":"/cashier/m/ajaxPay",
-   "checkRisk":"/cashier/m/security/verify",
-   "quickpayAuthCode":"/cashier/m/quickpay/payAuthCode",
-   "quickSignAuthCode":"/cashier/m/quickpay/signAuthCode",
-   "ajaxPayGate":"/cashier/m/gate/ajaxQueryPayGate",
-   "quickpaySign":"/cashier/m/quickpay/sign",
-   "getMBK":"/cashier/m/security/queryCoordinates",
-   "smsCode":"/cashier/m/security/sendAuthCode",
-   "setShortPayPassword":"/cashier/m/security/setShortPayPassword",
-   "sendAuthCodeToFindPassword":"/cashier/m/security/sendAuthCodeToFindPassword",
-   "checkAuthCodeToFindShortPayPassword":"/cashier/m/security/checkAuthCodeToFindShortPayPassword"
+   "addAccount":"/guanghe/merchant/process",
+   "addProduct":"/localDevelopment/interface/addProduct.html"
 }> 

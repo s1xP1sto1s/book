@@ -18,7 +18,7 @@ public interface MerchantService {
 	 * @return
 	 * @throws IOException
 	 */
-	public String create(Merchant merchant) throws IOException;
+	public String create(Merchant merchant);
 	
 	/**
 	 * 根据用户名查询商户
@@ -26,4 +26,11 @@ public interface MerchantService {
 	 * @return
 	 */
 	public List<Merchant> findByName(String username);
+	
+	/**
+	 * 更新商家信息
+	 * @param merchant
+	 * @return
+	 */
+	public String update(Merchant merchant);
 }

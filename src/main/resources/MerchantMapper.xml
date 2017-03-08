@@ -20,6 +20,16 @@
 			(#{item.ursName},#{item.name},#{item.concat},#{item.mobile},#{item.email},#{item.status},#{item.enabled})
 		</foreach>
 	</insert>
+	
+	<update id="updateMerchant" parameterType="Merchant">
+		UPDATE merchant SET
+			name = #{name},
+			concat = #{concat},
+			mobile = #{mobile},
+			email = #{email}
+		WHERE
+			urs_name = #{ursName}
+	</update>
 	 
 	<select id="selectMerchantByName" parameterType="java.lang.String" resultMap="merchantResultMap">
 		SELECT * FROM merchant WHERE name = #{name}
