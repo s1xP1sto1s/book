@@ -17,6 +17,12 @@
     <div style="text-align:right">
       <button class="ui-btn-1"><i class="icon-plus"></i> 添加产品</button>
     </div>
+    
+    <#list product as p>
+    ${p.name}
+    </#list>
+    
+    
     <table class="ui-table">
       <thead>
         <tr>

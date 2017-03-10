@@ -36,9 +36,9 @@ public class App {
 	@Autowired
 	MerchantService merService;
 
-    @RequestMapping("/")
+//    @RequestMapping("/")
     @ResponseBody
-    String home() throws IOException {
+    List<Product> home() throws IOException {
 //    	Merchant merchant = new Merchant();
 //    	merchant.setName("shop");
 //    	merchant.setUrsName("lin");
@@ -119,8 +119,8 @@ public class App {
 //    	pro.setStatus("unchecked");
 //    	proMapper.updateProduct(pro);
     	
-    	List<Product> list = proMapper.selectProductByName("name");
-    	return "ok"+list.size();
+    	List<Product> list = proMapper.selectProductByMerchantId(20);
+    	return list;
     }
 
     public static void main(String[] args) throws Exception {

@@ -92,8 +92,8 @@
 			id = #{id}	
 	</update>
 	
-	<select id="selectProductByName" parameterType="java.lang.String" resultMap="productMap">
-		SELECT * FROM product WHERE name = #{name}
+	<select id="selectProductByMerchantId" parameterType="java.lang.Integer" resultMap="productMap">
+		SELECT * FROM product WHERE merchant_id = #{merchantId}
 	</select>
 	
 	<resultMap type="Product" id="productMap">
@@ -113,4 +113,9 @@
 		<result column="detail_page_content" property="detailPageContent"/>
 		<result column="status" property="status"/>
 	</resultMap>
+	
+	<delete id="deleteProductByName">
+		DELETE FROM product WHERE name = #{name}
+	</delete>
+	
 </mapper>

@@ -20,7 +20,7 @@ public class MerchantServiceImpl implements MerchantService {
 	@Override
 	public String create(Merchant merchant){
 		int num = merchantMapper.insertMerchant(merchant);
-		return num>0?"success":"faled";
+		return num>0?"success":"fail";
 	}
 
 	@Override

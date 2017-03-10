@@ -1,5 +1,7 @@
 package com.netease.fin.service;
 
+import java.util.List;
+
 import com.netease.fin.model2.Product;
 import com.netease.fin.model2.SaveProductRequest;
 import com.netease.fin.model2.UpdateProductAppSecretRequest;
@@ -16,18 +18,12 @@ public interface ProductService {
 	 * 
 	 * @return
 	 */
-	public Product createProduct(SaveProductRequest request);
-	/**
-	 * 更新app密钥
-	 * @param request
-	 * @return
-	 */
-	public Product updateAppSecret(UpdateProductAppSecretRequest request);
-	/**
-	 * 获取产品私钥
-	 * @param appKey
-	 * @return
-	 */
-	public String getProductAppPK(String appKey);
+	String createProduct(Product product);
 
+	/**
+	 * 由商户Id查询商户的产品
+	 * @param merchantId
+	 * @return
+	 */
+	List<Product> findProductByMerchantId(int merchantId);
 }

@@ -21,5 +21,5 @@ sendAuthCodeToFindPassword //找回密码发送验证码
 -->
 <#assign interfaceUrlMap={
    "addAccount":"/guanghe/merchant/process",
-   "addProduct":"/localDevelopment/interface/addProduct.html"
+   "addProduct":"/guanghe/product/process"
 }> 

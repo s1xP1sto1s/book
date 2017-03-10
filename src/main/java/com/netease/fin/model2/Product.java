@@ -14,20 +14,20 @@ public class Product implements Serializable{
 	private Integer Id;
 	private String name;
 	private Integer merchantId;
-	private Integer bizId;
+	private Integer bizId = 0;
 	private String productType;
-	private String appKey;
+	private String appKey = "";
 	
-	private String merchantPublicKey;
-	private String platformPublicKey;
-	private String platformPrivateKey;
+	private String merchantPublicKey = "";
+	private String platformPublicKey = "";
+	private String platformPrivateKey = "";
 	
-	private Integer authTplId;
-	private String authTplContent;
-	private Integer serviceTplId;
-	private String serviceTplContent;
-	private String detailPageContent;
-	private String status;//online,offline,checking
+	private Integer authTplId = 0;
+	private String authTplContent = "";
+	private Integer serviceTplId = 0;
+	private String serviceTplContent = "";
+	private String detailPageContent = "";
+	private String status = "online";//online,offline,checking
 	
 	public Integer getId() {
 		return Id;

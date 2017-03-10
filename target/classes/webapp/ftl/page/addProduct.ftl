@@ -10,11 +10,11 @@
     <li> <a href="index.html">系统首页</a>&gt;</li>
     <li><a href="#">产品管理</a></li>
   </ul>
-  <#if !account.regist>
+
   <div class="ui-alert alert-4"> <i class="icon-exclamation-sign"></i> 您还没有入驻，请 <strong><a href="/page/account.ftl">填写完基本信息</a></strong> 并通过认证后才能添加产品 </div>
-  <#elseif !account.identification>
+
     <div class="ui-alert alert-4"> <i class="icon-exclamation-sign"></i> 您还未完成企业认证，暂不能添加产品 </div>
-  </#if>
+
   <form action="#" class="ui-form">
     <div class="control-title"><i class="icon-cog"></i> 添加产品</div>
     <div class="control-group">
@@ -36,7 +36,7 @@
         <span class="err-inline" id="contact_err"></span> </div>
     </div>
     <div class="form-actions">
-      <button type="button" class="ui-btn-1<#if !account.regist || !account.identification> ui-btn-disabled</#if>" id="btn">下一步</button>
+      <button type="button" class="ui-btn-1" id="btn">下一步</button>
      </div>
   </form>
 </div>

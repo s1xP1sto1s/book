@@ -1,5 +1,11 @@
 package com.netease.fin.service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.netease.fin.dao.ProductMapper;
 import com.netease.fin.model2.Product;
 import com.netease.fin.model2.SaveProductRequest;
 import com.netease.fin.model2.UpdateProductAppSecretRequest;
@@ -8,31 +14,24 @@ import com.netease.fin.model2.UpdateProductAppSecretRequest;
  * @author hzsiyaomin
  *
  */
+@Service
 public class ProductServiceImpl implements ProductService{
-
+	
+	@Autowired
+	ProductMapper productMapper;
+	
+	
 	@Override
-	public Product createProduct(SaveProductRequest request) {
-		// TODO Auto-generated method stub
-		//生成appkey apppublickey appprivate key
-		request.setAppKey("");//宽度为6的随机字符串
-		request.setAppPrivateKey("");
-		request.setAppPrivateKey("");//rsa
-		//save to db
-		
-		Product res=new Product();
-		return res;
+	public String createProduct(Product product) {
+		int num = productMapper.insertProduct(product);
+		return num>0?"success":"fail";
 	}
 
 	@Override
-	public Product updateAppSecret(UpdateProductAppSecretRequest request) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Product> findProductByMerchantId(int merchantId) {
+		List<Product> list = productMapper.selectProductByMerchantId(merchantId);
+		return list;
 	}
-
-	@Override
-	public String getProductAppPK(String appKey) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
+	
 }

@@ -35,6 +35,13 @@ public interface ProductMapper {
 	 * @param name
 	 * @return
 	 */
-	List<Product> selectProductByName(@Param("name") String name);
+	List<Product> selectProductByMerchantId(@Param("merchantId") int merchantId);
+	
+	/**
+	 * 根据商品名称删除商品
+	 * @param name
+	 * @return
+	 */
+	public int deleteProductByName(@Param("name") String name);
 
 }
