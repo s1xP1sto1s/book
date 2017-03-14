@@ -9,15 +9,15 @@ define(
 		return document.getElementById(id);	
 	}
 
-	$('#accountName').get(0).checkData = {	
-		err:$('#accountName_err').get(0),
+	$('#name').get(0).checkData = {	
+		err:$('#name_err').get(0),
 		check:function(v){
 			if(v === ''){return '商户名称不能为空'}			
 		}
 	}
 
-	$('#contact').get(0).checkData = {	
-		err:$('#contact_err').get(0),
+	$('#concat').get(0).checkData = {	
+		err:$('#concat_err').get(0),
 		check:function(v){
 			if(v === ''){return '联系人不能为空'}
 			if(!epay.checkReg.trueName.test(v)){return '联系人格式不正确'}
@@ -41,8 +41,8 @@ define(
 	}
 
 
-	//var eles = [gid('accountName'),gid('contact'),gid('mobile'),gid('email')];
-	var eles = [];
+	var eles = [gid('name'),gid('concat'),gid('mobile'),gid('email')];
+	//var eles = [];
 	var v = new validate();
 	
 	v.bindBlur(eles)
@@ -60,46 +60,47 @@ define(
 	
 	
 	var ajaxTime = 10000;//调用接口上限时间		
-	//ajax验证码时间戳
-	function versionTime(){
-		return '?v=' + new Date().getTime();	
-	};
-
-
-
-	function fillErrForAjax(err){		
-		for(var p in err){
-			if(gid(p)){
-				gid(p + '_err').innerHTML = err[p];
-			}	
-			
-		};		
-	}
-	
 
 	
-	var datas = {ursName:'laldad@126.com',name:'sxc',concat:'afad',mobile:'1879908877',email:'aaa@126.com'}
-	function submitForm(){	
-		
+	function submitForm(){		
 		$('#submit_err').html('');
+		var datas = {
+			name:$('#name').val(),
+			concat:$('#concat').val(),
+			mobile:$('#mobile').val(),
+			email:$('#email').val()
+		};	
 		$.ajax({				
-			url:interfaceUrlMap.addAccount + versionTime(),
-			type:"POST",			
+			url:interfaceUrlMap.addAccount + epay.versionTime(),
+			type:"POST",	
+			data:datas,		
 			timeout:ajaxTime,	
-			data:datas,
-			error:function(){$('#loading').hide();	$('#submit_err').html('系统错误请重试222');},					
+			error:function(){$('#loading').hide();	$('#submit_err').html('系统错误请重试');},					
 			success:function(msg){
-				location.href = '/guanghe/merchant/show'	
+				$('#loading').hide();		
+				try{	
+					var e = typeof(msg) === "object" ? msg : eval("("+msg+")");	
+					var result = e["result"];												
+					if(result === "success"){	
+						location.href = '/merchant/show'
+					}
+					else if(result === "fail"){
+						epay.fillErrForAjax(e.errorMap);
+					}
+					else if(result === "error"){
+						$('#submit_err').html(e.errorMsg);
+					}
+					else{
+						$('#submit_err').html('系统错误请重试')
+					}						
+				}catch(e){						
+					$('#loading').hide();
+					$('#submit_err').html('系统错误请重试');				
+				};					
 			}
 		});		
 		
 	}
-
-
-	
-
-
-
 
 	}
 );

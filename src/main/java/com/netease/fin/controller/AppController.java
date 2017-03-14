@@ -43,8 +43,12 @@ public class AppController {
 	 * @return
 	 */
 	@RequestMapping("/")
-	public String index(HttpServletRequest request){
+	public String index(HttpServletRequest request,Map<String,Object> model){
 		return "page/index";
 	}
 	
+	@RequestMapping("/login")
+	public String login(HttpServletRequest request,HttpServletResponse response){
+		return "page/login";
+	}
 }

@@ -55,7 +55,9 @@ public class ProductController {
 	public ProductInfo process(HttpServletRequest request){
 		Product product = new Product();
 		product.setName(request.getParameter("name"));
-		product.setMerchantId(Integer.parseInt(request.getParameter("merchantId")));
+		//TODO 获得商家ID
+//		product.setMerchantId(Integer.parseInt(request.getParameter("merchantId")));
+		product.setMerchantId(20);
 		product.setProductType(request.getParameter("productType"));
 		//TODO 数据校验
 		productService.createProduct(product);

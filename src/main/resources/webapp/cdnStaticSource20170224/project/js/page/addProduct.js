@@ -10,16 +10,14 @@ define(
 
 
 	//表单验证	
-	$('#productName').get(0).checkData = {	
-		err:$('#productName_err').get(0),
+	$('#name').get(0).checkData = {	
+		err:$('#name_err').get(0),
 		check:function(v){
-			if(v === ''){return '产品应用名不能为空'}
-			if(!epay.checkReg.trueName.test(v)){return '联系人格式不正确'}
+			if(v === ''){return '产品应用名不能为空'}			
 		}
 	};
-	
-	//var eles = [gid('contact'),gid('mobile'),gid('email')];
-	var eles = [epay.$('productName')];
+
+	var eles = [epay.$('name')];
 	var v = new validate();	
 	v.bindBlur(eles);
 	
@@ -34,9 +32,14 @@ define(
 
 	function submitForm(){		
 		$('#submit_err').html('');
+		var datas = {
+			name:$('#name').val(),
+			productType:$('#productType').val()
+		};	
 		$.ajax({				
 			url:interfaceUrlMap.addProduct + epay.versionTime(),
-			type:"POST",			
+			type:"POST",	
+			data:datas,		
 			timeout:ajaxTime,	
 			error:function(){$('#loading').hide();	$('#submit_err').html('系统错误请重试');},					
 			success:function(msg){
@@ -45,7 +48,7 @@ define(
 					var e = typeof(msg) === "object" ? msg : eval("("+msg+")");	
 					var result = e["result"];												
 					if(result === "success"){	
-						location.href = '/page/product.ftl';
+						location.href = '/product/manager';
 					}
 					else if(result === "fail"){						
 						epay.fillErrForAjax(e.errorMap);

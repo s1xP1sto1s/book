@@ -1,5 +1,5 @@
 <#if !online??><#include "/localDevelopment/data/dataModel.ftl"><#else><#include "/localDevelopment/data/onlineModel.ftl"></#if>
-<#include "${rootURL.ftl}/include/pubHtml.ftl">
+<#include "/include/pubHtml.ftl">
 <title>首页</title>
 </head><body>
 <#include "/include/top.ftl">
@@ -8,8 +8,8 @@
 <div class="right">
   <div class="page-title">填写基本信息</div>
   <ul class="ui-breadcrumb">
-    <li> <a href="index.html">系统首页</a>&gt</li>
-    <li>账户管理</li>
+    <li> <a href="/">系统首页</a>&gt</li>
+     <li><a href="/merchant/show/">账户管理</a></li>
   </ul>
   <div style="border:1px solid #eee;display:none">
     <ul class="ui-step">
@@ -40,8 +40,8 @@
     <div class="control-group">
       <label class="control-label">商户名称</label>
       <div class="controls">
-        <input id="accountName" type="text" placeholder="请输入" class="m-wrap">
-        <span class="err-inline" id="accountName_err"></span>
+        <input id="name" type="text" placeholder="请输入" class="m-wrap">
+        <span class="err-inline" id="name_err"></span>
         <div><span class="help-inline">商家名称一旦输入，无法修改</span> </div>
       </div>
     </div>
@@ -49,8 +49,8 @@
     <div class="control-group">
       <label class="control-label">联系人</label>
       <div class="controls">
-        <input id="contact" type="text" placeholder="请输入" class="m-wrap">
-        <span class="err-inline" id="contact_err"></span> </div>
+        <input id="concat" type="text" placeholder="请输入" class="m-wrap">
+        <span class="err-inline" id="concat_err"></span> </div>
     </div>
     <div class="control-group">
       <label class="control-label">手机</label>
@@ -65,7 +65,7 @@
         <span class="err-inline" id="email_err"></span> </div>
     </div>
     <div class="form-actions">
-      <button type="button" class="ui-btn-1" id="btn">下一步</button>
+      <button type="button" class="ui-btn-1" id="btn">确定</button>
       <span id="submit_err" class="err-inline"></span> </div>
   </form>
 </div>

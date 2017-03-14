@@ -1,14 +1,13 @@
 <#if !online??><#include "/localDevelopment/data/dataModel.ftl"><#else><#include "/localDevelopment/data/onlineModel.ftl"></#if>
-<#include "${rootURL.ftl}/include/pubHtml.ftl">
+<#include "/include/pubHtml.ftl">
 <title>首页</title>
 </head><body>
 <#include "/include/top.ftl">
-
 <#include "/include/left.ftl">
 <div class="right">
   <div class="page-title">系统首页</div>
 
-   <div class="ui-alert alert-4"> <i class="icon-exclamation-sign"></i> 您还没有入驻，请 <strong><a href="/guanghe/merchant/register">填写基本信息</a></strong> 后完成流程。 </div>  
+   <div class="ui-alert alert-4"> <i class="icon-exclamation-sign"></i> 您还没有入驻，请 <strong><a href="/merchant/register">填写基本信息</a></strong> 后完成流程。 </div>  
 
   <!--系统简介 开始-->
   <div class="ui-box b-mt-20" style="display:none">

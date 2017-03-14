@@ -47,7 +47,10 @@ public class MerchantController {
 	public MerchantInfo process(HttpServletRequest request,HttpServletResponse response){
 		Merchant merchant = new Merchant(); 
 		merchant.setName(request.getParameter("name"));
-		merchant.setUrsName(request.getParameter("ursName"));
+		//TODO 商家账户号不用提交？
+//		merchant.setUrsName(request.getParameter("ursName"));
+		merchant.setUrsName("FennLin");
+		
 		merchant.setConcat(request.getParameter("concat"));
 		merchant.setEmail(request.getParameter("email"));
 		merchant.setMobile(request.getParameter("mobile"));
@@ -63,7 +66,7 @@ public class MerchantController {
 		errorMap.put("ursName", "不合法");
 		errorMap.put("email", "不合法");
 		MerchantInfo merInfo = new MerchantInfo();
-		merInfo.setData("fail");
+		merInfo.setData("success");
 		merInfo.setErrorMap(errorMap);
 		return merInfo;
 	}
@@ -76,34 +79,12 @@ public class MerchantController {
 	 */
 	@RequestMapping(value="/show")
 	public String show(HttpServletRequest request,Map<String,Object> model){
+		//TODO 获取商家用户名？
 //		String ursName = request.getParameter("ursName");
 		String ursName = "lin";
     	Merchant merchant = merchantService.findByName(ursName).get(0);
-    	model.put("id", merchant.getId());
-    	model.put("ursName", merchant.getUrsName());
-    	model.put("concat", merchant.getConcat());
-    	model.put("email", merchant.getEmail());
-    	model.put("name", merchant.getName());
-    	model.put("mobile", merchant.getMobile());
-    	model.put("status", merchant.getStatus());
-    	model.put("enabled", merchant.getEnabled());
+    	model.put("merchant",merchant);
 		return "page/accountInfo";
 	}
 	
-//	@RequestMapping(value="/test")
-//	public String test(HttpServletRequest request){
-////		String ursName = request.getParameter("ursName");
-//		String ursName = "lin";
-//    	Merchant merchant = merchantService.findByName(ursName).get(0);
-//    	ModelAndView mav = new ModelAndView();
-//    	mav.addObject("id", merchant.getId());
-//    	mav.addObject("ursName", merchant.getUrsName());
-//    	mav.addObject("concat", merchant.getConcat());
-//    	mav.addObject("email", merchant.getEmail());
-//    	mav.addObject("name", merchant.getName());
-//    	mav.addObject("mobile", merchant.getMobile());
-//    	mav.addObject("status", merchant.getStatus());
-//    	mav.addObject("enabled", merchant.getEnabled());
-//		return "page/accountInfo";
-//	}
 }

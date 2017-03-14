@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.netease.fin.dao.ProductMapper;
 import com.netease.fin.model2.Product;
-import com.netease.fin.model2.SaveProductRequest;
-import com.netease.fin.model2.UpdateProductAppSecretRequest;
+
 /**
  * 产品服务
  * @author hzsiyaomin

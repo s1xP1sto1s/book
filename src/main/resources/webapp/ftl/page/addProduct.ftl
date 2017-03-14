@@ -1,5 +1,5 @@
 <#if !online??><#include "/localDevelopment/data/dataModel.ftl"><#else><#include "/localDevelopment/data/onlineModel.ftl"></#if>
-<#include "${rootURL.ftl}/include/pubHtml.ftl">
+<#include "/include/pubHtml.ftl">
 <title>首页</title>
 </head><body>
 <#include "/include/top.ftl">
@@ -7,8 +7,8 @@
 <div class="right">
   <div class="page-title">创建产品</div>
   <ul class="ui-breadcrumb">
-    <li> <a href="index.html">系统首页</a>&gt;</li>
-    <li><a href="#">产品管理</a></li>
+    <li> <a href="/">系统首页</a>&gt;</li>
+    <li><a href="/product/manager">产品管理</a></li>
   </ul>
 
   <div class="ui-alert alert-4"> <i class="icon-exclamation-sign"></i> 您还没有入驻，请 <strong><a href="/page/account.ftl">填写完基本信息</a></strong> 并通过认证后才能添加产品 </div>
@@ -20,20 +20,19 @@
     <div class="control-group">
       <label class="control-label">产品应用名</label>
       <div class="controls">
-        <input id="productName" type="text" placeholder="请输入" />
-        <span class="err-inline" id="productName_err"></span>        
+        <input id="name" type="text" placeholder="请输入" />
+        <span class="err-inline" id="name_err"></span>        
       </div>
     </div>
     <div class="control-group">
       <label class="control-label">产品类型</label>
       <div class="controls">
-        <select class="m-wrap" tabindex="1">
-          <option value="Category 1">请选择产品类型</option>
+        <select class="m-wrap" tabindex="1" id="productType">         
           <option value="Category 1">白领贷</option>
           <option value="Category 2">公积金贷</option>
           <option value="Category 3">消费金融</option>
         </select>
-        <span class="err-inline" id="contact_err"></span> </div>
+        </div>
     </div>
     <div class="form-actions">
       <button type="button" class="ui-btn-1" id="btn">下一步</button>

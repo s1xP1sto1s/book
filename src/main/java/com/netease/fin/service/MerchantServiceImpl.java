@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.netease.fin.dao.MerchantMapper;
-import com.netease.fin.model2.CreateMarchantRequest;
+
 import com.netease.fin.model2.Merchant;
 
 @Service

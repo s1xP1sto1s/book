@@ -1,22 +1,9 @@
 define(
 	function(require) {
-		
+	
+	
+	var epay = require('epay');			
 	var ajaxTime = 10000;//调用接口上限时间	
-		
-	//ajax验证码时间戳
-	function versionTime(){
-		return '?v=' + new Date().getTime();	
-	};
-
-	function fillErrForAjax(err){		
-		for(var p in err){
-			if(gid(p)){
-				gid(p + '_err').innerHTML = err[p];
-			}	
-			
-		};		
-	};	
-			
 	
 	var dialog = require('dialog');	
 	var dialog  = new dialog();
@@ -34,8 +21,8 @@ define(
 		return document.getElementById(id);	
 	};
 	
-	$('#contact').get(0).checkData = {	
-		err:$('#contact_err').get(0),
+	$('#concat').get(0).checkData = {	
+		err:$('#concat_err').get(0),
 		check:function(v){
 			if(v === ''){return '联系人不能为空'}
 			if(!epay.checkReg.trueName.test(v)){return '联系人格式不正确'}
@@ -59,8 +46,8 @@ define(
 	};
 
 
-	//var eles = [gid('contact'),gid('mobile'),gid('email')];
-	var eles = [];
+	var eles = [gid('concat'),gid('mobile'),gid('email')];
+	//var eles = [];
 	var v = new validate();
 	
 	v.bindBlur(eles);
@@ -76,9 +63,16 @@ define(
 
 	function submitForm(){		
 		$('#submit_err').html('');
+		var datas = {
+			concat:$('#concat').val(),
+			mobile:$('#mobile').val(),
+			email:$('#email').val()
+		};		
+		
 		$.ajax({				
-			url:interfaceUrlMap.addAccount + versionTime(),
-			type:"POST",			
+			url:interfaceUrlMap.addAccount + epay.versionTime(),
+			type:"POST",		
+			data:datas,				
 			timeout:ajaxTime,	
 			error:function(){$('#loading').hide();	$('#submit_err').html('系统错误请重试');},					
 			success:function(msg){
@@ -88,9 +82,12 @@ define(
 					var result = e["result"];												
 					if(result === "success"){	
 						dialog.close();
+						$('#concat-2').html(datas.concat);
+						$('#mobile-2').html(datas.mobile);
+						$('#email-2').html(datas.email);						
 					}
 					else if(result === "fail"){
-						fillErrForAjax(e.errorMap);
+						epay.fillErrForAjax(e.errorMap);
 					}
 					else if(result === "error"){
 						$('#submit_err').html(e.errorMsg);

@@ -3,7 +3,7 @@ package com.netease.fin.service;
 import java.io.IOException;
 import java.util.List;
 
-import com.netease.fin.model2.CreateMarchantRequest;
+
 import com.netease.fin.model2.Merchant;
 
 /**
