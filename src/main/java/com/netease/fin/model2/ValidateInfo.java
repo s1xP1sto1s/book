@@ -3,7 +3,7 @@ package com.netease.fin.model2;
 import java.io.Serializable;
 import java.util.Map;
 
-public class ProductInfo implements Serializable {
+public class ValidateInfo implements Serializable {
 	private String result;//success|fail|error
 	private String errorMsg;//result=error时用到
 	private Map<String,String> errorMap;//返回fail的信息

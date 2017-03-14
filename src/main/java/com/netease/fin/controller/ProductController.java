@@ -1,17 +1,21 @@
 package com.netease.fin.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.netease.fin.model2.Product;
-import com.netease.fin.model2.ProductInfo;
+import com.netease.fin.model2.ValidateInfo;
 import com.netease.fin.service.ProductService;
 
 @Controller
@@ -52,15 +56,28 @@ public class ProductController {
 	 */
 	@RequestMapping("/process")
 	@ResponseBody
-	public ProductInfo process(HttpServletRequest request){
-		Product product = new Product();
-		product.setName(request.getParameter("name"));
+	public ValidateInfo process(@Valid Product product,BindingResult result){
+
 		//TODO 获得商家ID
 //		product.setMerchantId(Integer.parseInt(request.getParameter("merchantId")));
 		product.setMerchantId(20);
-		product.setProductType(request.getParameter("productType"));
-		//TODO 数据校验
-		productService.createProduct(product);
-		return new ProductInfo();
+		
+		//数据校验
+		//存储校验结果的对象
+		ValidateInfo proInfo = new ValidateInfo();
+		Map<String,String> errorMap = new HashMap<String,String>();
+		if(result.hasErrors()){
+			proInfo.setResult("fail");
+			List<FieldError> errorList = result.getFieldErrors();
+			for(FieldError fe:errorList){
+				errorMap.put(fe.getField(), fe.getDefaultMessage());
+			}
+			proInfo.setErrorMap(errorMap);
+		}
+		else{
+			proInfo.setResult("success");
+			productService.createProduct(product);
+		}
+		return proInfo;
 	}
 }

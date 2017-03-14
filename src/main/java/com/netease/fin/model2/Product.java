@@ -2,6 +2,9 @@ package com.netease.fin.model2;
 
 import java.io.Serializable;
 import java.util.Map;
+
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 /**
  * 产品信息
  * @author hzsiyaomin
@@ -12,9 +15,13 @@ public class Product implements Serializable{
 	private static final long serialVersionUID = 1L;
 	//不公开 易被穷举
 	private Integer Id;
+	
+	@Size(min=1,max=20,message="长度必须在1到20之间")
 	private String name;
+	
 	private Integer merchantId;
 	private Integer bizId = 0;
+	
 	private String productType;
 	private String appKey = "";
 	

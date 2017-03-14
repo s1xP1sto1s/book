@@ -6,16 +6,19 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.netease.fin.model2.Merchant;
-import com.netease.fin.model2.MerchantInfo;
+import com.netease.fin.model2.ValidateInfo;
 import com.netease.fin.service.MerchantService;
 
 @Controller
@@ -44,30 +47,34 @@ public class MerchantController {
 	 */
 	@RequestMapping(value="/process",method=RequestMethod.POST)
 	@ResponseBody
-	public MerchantInfo process(HttpServletRequest request,HttpServletResponse response){
-		Merchant merchant = new Merchant(); 
-		merchant.setName(request.getParameter("name"));
+	public ValidateInfo process(@Valid Merchant merchant,BindingResult result){
+		
 		//TODO 商家账户号不用提交？
-//		merchant.setUrsName(request.getParameter("ursName"));
-		merchant.setUrsName("FennLin");
+	//	merchant.setUrsName(request.getParameter("ursName"));
+		merchant.setUrsName("FennLiu");
 		
-		merchant.setConcat(request.getParameter("concat"));
-		merchant.setEmail(request.getParameter("email"));
-		merchant.setMobile(request.getParameter("mobile"));
-		
-		//TODO 数据校验		
-		List<Merchant> list = merchantService.findByName(merchant.getUrsName());
-		if(list.size()==0)
-			merchantService.create(merchant);
-		else
-			merchantService.update(merchant);
-		
+		//数据校验
+		//存储校验结果的对象
+		ValidateInfo merInfo = new ValidateInfo();
 		Map<String,String> errorMap = new HashMap<String,String>();
-		errorMap.put("ursName", "不合法");
-		errorMap.put("email", "不合法");
-		MerchantInfo merInfo = new MerchantInfo();
-		merInfo.setData("success");
-		merInfo.setErrorMap(errorMap);
+		if(result.hasErrors()){
+			merInfo.setResult("fail");
+			List<FieldError> errorList = result.getFieldErrors();
+			for(FieldError fe:errorList){
+				errorMap.put(fe.getField(), fe.getDefaultMessage());
+			}
+			merInfo.setErrorMap(errorMap);
+		}
+		else{
+			merInfo.setResult("success");
+			//插入或更新商家数据
+			List<Merchant> list = merchantService.findByName(merchant.getUrsName());
+			if(list.size()==0)
+				merchantService.create(merchant);
+			else
+				merchantService.update(merchant);
+		}
+
 		return merInfo;
 	}
 	
