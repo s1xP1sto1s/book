@@ -12,6 +12,6 @@ public class MvcInterceptorConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new FreemarkerGlobalVarInterceptor()).addPathPatterns("/**");
-        registry.addInterceptor(new LoginCheckInterceptor()).addPathPatterns("/**");
+        registry.addInterceptor(new LoginCheckInterceptor()).addPathPatterns("/**/merchant/**","/**/product/**");
     }
 }

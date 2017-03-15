@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -88,7 +89,13 @@ public class MerchantController {
 	public String show(HttpServletRequest request,Map<String,Object> model){
 		//TODO 获取商家用户名？
 //		String ursName = request.getParameter("ursName");
-		String ursName = "lin";
+		String ursName = null;
+		Cookie[] cks = request.getCookies();
+		for(Cookie ck:cks){
+			if("ursName".equals(ck.getName())){
+				ursName = ck.getValue();
+			}
+		}
     	Merchant merchant = merchantService.findByName(ursName).get(0);
     	model.put("merchant",merchant);
 		return "page/accountInfo";

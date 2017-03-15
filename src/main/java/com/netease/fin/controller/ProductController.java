@@ -32,6 +32,7 @@ public class ProductController {
 	 */
 	@RequestMapping("/manager")
 	public String manager(HttpServletRequest request,Map<String,Object> model){
+		//TODO 获得商家ID？
 //		int merchantId = Integer.parseInt(request.getParameter("merchantId"));
 		List<Product> product = productService.findProductByMerchantId(20);
 		model.put("product", product);

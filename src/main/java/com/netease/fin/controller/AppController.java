@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletResponse;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -43,7 +44,9 @@ public class AppController {
 	 * @return
 	 */
 	@RequestMapping("/")
-	public String index(HttpServletRequest request,Map<String,Object> model){
+	public String index(HttpServletRequest request,HttpServletResponse response,Map<String,Object> model){
+		Cookie cookie = new Cookie("ursName", "lin");
+		response.addCookie(cookie);
 		return "page/index";
 	}
 	
