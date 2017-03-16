@@ -33,4 +33,11 @@ public interface MerchantService {
 	 * @return
 	 */
 	public String update(Merchant merchant);
+	
+	/**
+	 * 商家是否填写入驻信息
+	 * @param username
+	 * @return
+	 */
+	public boolean isIdentification(String username);
 }

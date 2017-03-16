@@ -14,8 +14,10 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.netease.fin.model2.Merchant;
 import com.netease.fin.model2.Product;
 import com.netease.fin.model2.ValidateInfo;
+import com.netease.fin.service.MerchantService;
 import com.netease.fin.service.ProductService;
 
 @Controller
@@ -25,6 +27,9 @@ public class ProductController {
 	@Autowired
 	ProductService productService;
 	
+	@Autowired
+	MerchantService merchantService;
+	
 	/**
 	 * 根据商户Id查询产品
 	 * @param request
@@ -32,9 +37,9 @@ public class ProductController {
 	 */
 	@RequestMapping("/manager")
 	public String manager(HttpServletRequest request,Map<String,Object> model){
-		//TODO 获得商家ID？
-//		int merchantId = Integer.parseInt(request.getParameter("merchantId"));
-		List<Product> product = productService.findProductByMerchantId(20);
+		String ursName = (String)request.getAttribute("ursName");
+		Merchant merchant = merchantService.findByName(ursName).get(0);
+		List<Product> product = productService.findProductByMerchantId(merchant.getId());
 		model.put("product", product);
 		return "page/product";
 	}
@@ -57,11 +62,11 @@ public class ProductController {
 	 */
 	@RequestMapping("/process")
 	@ResponseBody
-	public ValidateInfo process(@Valid Product product,BindingResult result){
+	public ValidateInfo process(HttpServletRequest request,@Valid Product product,BindingResult result){
 
-		//TODO 获得商家ID
-//		product.setMerchantId(Integer.parseInt(request.getParameter("merchantId")));
-		product.setMerchantId(20);
+		String ursName = (String)request.getAttribute("ursName");
+		Merchant merchant = merchantService.findByName(ursName).get(0);
+		product.setMerchantId(merchant.getId());
 		
 		//数据校验
 		//存储校验结果的对象

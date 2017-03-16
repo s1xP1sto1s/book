@@ -48,12 +48,9 @@ public class MerchantController {
 	 */
 	@RequestMapping(value="/process",method=RequestMethod.POST)
 	@ResponseBody
-	public ValidateInfo process(@Valid Merchant merchant,BindingResult result){
+	public ValidateInfo process(HttpServletRequest request,@Valid Merchant merchant,BindingResult result){
 		
-		//TODO 商家账户号不用提交？
-	//	merchant.setUrsName(request.getParameter("ursName"));
-		merchant.setUrsName("FennLiu");
-		
+		merchant.setUrsName((String)request.getAttribute("ursName"));
 		//数据校验
 		//存储校验结果的对象
 		ValidateInfo merInfo = new ValidateInfo();
@@ -69,8 +66,8 @@ public class MerchantController {
 		else{
 			merInfo.setResult("success");
 			//插入或更新商家数据
-			List<Merchant> list = merchantService.findByName(merchant.getUrsName());
-			if(list.size()==0)
+			boolean flag = merchantService.isIdentification(merchant.getUrsName());
+			if(!flag)
 				merchantService.create(merchant);
 			else
 				merchantService.update(merchant);
@@ -87,15 +84,7 @@ public class MerchantController {
 	 */
 	@RequestMapping(value="/show")
 	public String show(HttpServletRequest request,Map<String,Object> model){
-		//TODO 获取商家用户名？
-//		String ursName = request.getParameter("ursName");
-		String ursName = null;
-		Cookie[] cks = request.getCookies();
-		for(Cookie ck:cks){
-			if("ursName".equals(ck.getName())){
-				ursName = ck.getValue();
-			}
-		}
+		String ursName = (String)request.getAttribute("ursName");
     	Merchant merchant = merchantService.findByName(ursName).get(0);
     	model.put("merchant",merchant);
 		return "page/accountInfo";

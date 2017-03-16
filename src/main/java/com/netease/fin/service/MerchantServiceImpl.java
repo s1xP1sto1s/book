@@ -35,4 +35,12 @@ public class MerchantServiceImpl implements MerchantService {
 		return num>0?"success":"faled";
 	}
 
+	@Override
+	public boolean isIdentification(String username) {
+		List<Merchant> list = findByName(username);
+		if(list.size()==0)
+			return false;
+		return true;
+	}
+
 }

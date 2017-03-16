@@ -7,12 +7,13 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.JSONObject;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.alibaba.fastjson.JSON;
 import com.netease.fin.model2.ValidateInfo;
 import com.netease.urs.ntescode;
+
 
 /**
  * 会话
@@ -61,6 +62,7 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
 						String removeip = request.getRemoteAddr();
 						if(userip!=null && userip.equals(removeip)){
 							//ip校验通过
+							request.setAttribute("ursName", new String(n.ssn));
 							return true;
 						}
 						else{
@@ -73,15 +75,10 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
 			}
 		}
 		//无"NTES_SESS"cookie，说明未登陆，需要重新登陆
-//		response.sendRedirect("/login");
-		ValidateInfo vi = new ValidateInfo();
-		vi.setResult("fail");
-		Map<String,String> map = new HashMap<String,String>();
-		map.put("say","666");
-		vi.setErrorMap(map);
-//		String json = JSONObject.;
-//		response.getWriter().println(json);
+		response.sendRedirect("/login");
 		return false;
+//		request.setAttribute("ursName", new String("FennLin"));
+//		return true;
 	}
 
 }
