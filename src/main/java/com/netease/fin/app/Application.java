@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Application {
 	
 	public static void main(String[] args) {
+		//启动Spring Boot
 		SpringApplication.run(Application.class, args);
 	}
 }

@@ -75,10 +75,10 @@ public class LoginCheckInterceptor implements HandlerInterceptor {
 			}
 		}
 		//无"NTES_SESS"cookie，说明未登陆，需要重新登陆
-		response.sendRedirect("/login");
-		return false;
-//		request.setAttribute("ursName", new String("FennLin"));
-//		return true;
+//		response.sendRedirect("/login");
+//		return false;
+		request.setAttribute("ursName", new String("FennLin"));
+		return true;
 	}
 
 }

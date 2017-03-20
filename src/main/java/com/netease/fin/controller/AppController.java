@@ -47,6 +47,7 @@ public class AppController {
 	public String index(HttpServletRequest request,HttpServletResponse response,Map<String,Object> model){
 		Cookie cookie = new Cookie("ursName", "lin");
 		response.addCookie(cookie);
+		request.getSession().setAttribute("haha", "FennLin");
 		return "page/index";
 	}
 	
